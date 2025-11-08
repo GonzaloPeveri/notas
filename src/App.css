@@ -1,42 +1,162 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.container {
+  border: 1px solid rgb(80, 80, 80);
+  min-height: 500px;
+  border-radius: 10px;
+  width: 90vw;
+  display: flex;
+  margin: auto;
+  box-sizing: border-box;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media (min-width: 1200px) {
+  .container {
+    width: 60vw;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+
+.lista-de-notas-container {
+  width: 30%;
+  border-right: 1px solid rgb(80, 80, 80);
+  min-height: 500px;
+  display: block;
+  text-align: left;
+  padding: 0px 20px;
+  padding-bottom: 10px;
+}
+
+@media (min-width: 1200px) {
+  .lista-de-notas-container {
+    width: 20%;
   }
 }
 
-.card {
-  padding: 2em;
+.lista-de-notas-container p {}
+
+
+.contenido-de-notas-container {
+  width: 70%;
+  text-align: left;
+  display: block;
+  padding: 0px 20px;
 }
 
-.read-the-docs {
-  color: #888;
+h2 {
+  /*text-align: center;*/
+}
+
+.contenido-de-notas-container p {}
+
+
+
+.contenedor-de-boton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-de-boton button {
+  color: white;
+  background-color: rgb(80, 170, 80);
+  background: linear-gradient(135deg, rgb(80, 170, 80), rgb(80, 200, 130));
+  padding: 10px;
+  height: 50px;
+  font-size: 40px;
+  font-weight: 900;
+  text-align: center;
+  width: 50px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+  border-top-color: rgb(150, 150, 150);
+  border-left-color: rgb(150, 150, 150);
+  border-bottom-color: rgb(60, 60, 60);
+  border-right-color: rgb(60, 60, 60);
+}
+
+.contenedor-de-boton button:hover {
+  border-top-color: rgb(180, 180, 180);
+  border-left-color: rgb(180, 180, 180);
+  border-bottom-color: rgb(0, 0, 0);
+  border-right-color: rgb(0, 0, 0);
+}
+
+.contenedor-de-boton button:active {
+  border-top-color: rgb(0, 0, 0);
+  border-left-color: rgb(0, 0, 0);
+  border-bottom-color: rgb(180, 180, 180);
+  border-right-color: rgb(180, 180, 180);
+}
+
+.nota-container {
+  border-radius: 5px;
+  background-color: rgb(235, 235, 235);
+  margin: 8px 0;
+  padding: 4px 2px;
+  box-sizing: border-box;
+}
+
+.nota-container .nota {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 4px;
+}
+
+.editar-nota-input {
+  width: calc(100% - 2px);
+  padding: 5px 0;
+  margin: 0px;
+  border-radius: 3px;
+  border: 1px solid rgb(120, 120, 120);
+}
+
+.editar-nota-input:focus {
+  outline: 2px solid rgb(120, 120, 120);
+}
+
+.editar-nota-toggle {
+  width: calc(50% - 2px);
+  margin: 2px 2px 0px 0px;
+}
+
+.eliminar-nota {
+  width: calc(50% - 2px);
+  margin: 2px 0px 0px 2px;
+}
+
+.informacion-paragraph {
+  background-color: rgb(235, 235, 235);
+  width: 100%;
+  height: calc(100% - 100px);
+  padding: 6px 6px;
+  margin: 0px;
+  white-space: pre-line;
+  line-height: 24px;
+}
+
+.informacion-textarea {
+  resize: none;
+  background-color: rgb(235, 235, 235);
+  border-radius: 6px;
+  overflow: hidden;
+  line-height: 24px;
+  width: 100%;
+  padding: 5px;
+  margin: 0px;
+  height: calc(100% - 100px);
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.informacion-textarea:focus {
+  border-radius: 3px;
+  outline: 2px solid rgb(120, 120, 120);
 }
