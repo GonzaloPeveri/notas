@@ -7,7 +7,7 @@ function App() {
     {
       id: "a12f4c9d-8b3d-4b90-9f45-7b39a91b1234",
       nombre: "Tesla Model S Plaid",
-      informacion: "Sedán eléctrico con más de 1,000 caballos de fuerza, acelera de 0 a 100 km/h en 2.1 segundos.",
+      informacion: "Sedán eléctrico con más de 1,000 caballos de fuerza, capaz de acelerar de 0 a 100 km/h en apenas 2.1 segundos. Es el resultado de años de innovación de Tesla, que buscaba demostrar que un coche eléctrico puede ser más rápido que casi cualquier deportivo a gasolina. Su interior minimalista y su tecnología futurista lo hacen sentir como un vehículo del mañana, disponible hoy.",
       editandoContenido: "Sedán eléctrico con más de 1,000 caballos de fuerza, acelera de 0 a 100 km/h en 2.1 segundos."
     },
     {
@@ -69,9 +69,8 @@ function ContenidoDeNotas({ notas, setNotas, editar, notaSeleccionada }) {
   function handleChange(event) {
     const newValue = event.target.value;
     const saltosDeLinea = (newValue.match(/\n/g) || []).length;
-    console.log(saltosDeLinea);
-    console.log(newValue.length);
-    if (saltosDeLinea < 17) {
+    const newValueLength = newValue.length;
+    if (saltosDeLinea < 17 && newValueLength < 1000) {
       setNotas((prevNotas) => {
         const updatedNotas = [...prevNotas];
         updatedNotas[notaSeleccionada] = { ...updatedNotas[notaSeleccionada], editandoContenido: newValue };
@@ -108,7 +107,8 @@ function ManejarNota({ notas, setNotas, index, notaSeleccionada, setNotaSeleccio
 
       const newValue = notas[index].editandoContenido;
       const saltosDeLinea = (newValue.match(/\n/g) || []).length;
-      if (saltosDeLinea < 17) {
+      const newValueLength = newValue.length;
+      if (saltosDeLinea < 17 && newValueLength < 300) {
         setNotas((prevNotas) => {
           const updatedNotas = [...prevNotas];
           updatedNotas[index] = { ...updatedNotas[index], informacion: newValue };
@@ -122,7 +122,8 @@ function ManejarNota({ notas, setNotas, index, notaSeleccionada, setNotaSeleccio
       setEditar(-1);
       const newValue = notas[index].informacion;
       const saltosDeLinea = (newValue.match(/\n/g) || []).length;
-      if (saltosDeLinea < 17) {
+      const newValueLength = newValue.length;
+      if (saltosDeLinea < 17 && newValueLength < 300) {
         setNotas((prevNotas) => {
           const updatedNotas = [...prevNotas];
           updatedNotas[index] = { ...updatedNotas[index], editandoContenido: newValue };
@@ -145,13 +146,6 @@ function ManejarNota({ notas, setNotas, index, notaSeleccionada, setNotaSeleccio
     if (newValue.length <= 25) {
       setEditandoNombre(newValue);
     }
-    /*
-    setNotas((prevNotas) => {
-      const updatedNotas = [...prevNotas];
-      updatedNotas[index] = { ...updatedNotas[index], nombre: newValue };
-
-      return updatedNotas;
-    });*/
   }
 
   function handleCancelar() {
@@ -173,7 +167,7 @@ function ManejarNota({ notas, setNotas, index, notaSeleccionada, setNotaSeleccio
       {(editar === index) ?
         <input className="editar-nota-input" onChange={handleChange} value={editandoNombre} onKeyDown={handleKeyDown} />
         :
-        <button className={(notaSeleccionada === index) ? "nota nota-seleccionada" : "nota"} onClick={handleEditarAceptar} data-text={notas[index].nombre}>{notas[index].nombre}</button>
+        <button className={(notaSeleccionada === index) ? "nota nota-seleccionada" : "nota"} onClick={handleEditarAceptar}>{notas[index].nombre}</button>
       }
       <button className={(editar === index) ? "editar-nota-toggle-editando" : "editar-nota-toggle"} onClick={() => {
         handleEditarAceptar();
@@ -209,7 +203,6 @@ function AddButton({ notas, setNotas, setNotaSeleccionada }) {
       informacion: "Información de la nueva nota.\n" + uuidv4(),
     };
     setNotas((prevNotas) => [...prevNotas, nuevaNota]);
-    console.log("nota agregada: " + notas.length);
     setNotaSeleccionada(notas.length);
   };
 
